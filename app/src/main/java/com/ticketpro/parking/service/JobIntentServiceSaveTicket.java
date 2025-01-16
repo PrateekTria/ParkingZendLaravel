@@ -149,7 +149,7 @@ public class JobIntentServiceSaveTicket extends JobIntentService {
                 }
              //   if (!picture.getImagePath().contains("VLPR")) {
                     uploadImages.add(picture);
-             //   }
+            //    }
                 String[] path = picture.getImagePath().split("/");
                 picture.setImagePath(path[path.length - 1]);
                 ticketPictures.add(picture);
@@ -162,7 +162,7 @@ public class JobIntentServiceSaveTicket extends JobIntentService {
             params.setTickets(_singleTicketArray);
             requestPOJO.setParams(params);
 
-            if (!_singleTicketArray.isEmpty()) {
+            if (_singleTicketArray.size() > 0) {
 
                 api.syncTickets(requestPOJO).enqueue(new Callback<TicketResponse>() {
                     @SuppressLint("LongLogTag")
@@ -172,7 +172,7 @@ public class JobIntentServiceSaveTicket extends JobIntentService {
                         try {
                             if (response.isSuccessful() && response.body() != null && response.body().getResult().getResult()) {
                                 Log.i(TAG, "onResponse: " + new Gson().toJson(response.body()));
-                                if (uploadImages.size() > 0) {
+                                if (!uploadImages.isEmpty()) {
                                     syncUploadImages(ticket.getCitationNumber(), TicketPicture.getTicketPicturesByCitationPI(ticket.getCitationNumber()));
                                 }
                                 uploadVoiceComments(uploadVoiceComments);
@@ -281,14 +281,13 @@ public class JobIntentServiceSaveTicket extends JobIntentService {
             boolean uploadFlag = false;
             for (TicketPicture ticketPicture : images) {
                 try {
-                //    if (!ticketPicture.getImagePath().contains("VLPR")) {
-                    System.out.println("uploadfile3>>>>>>>");
+                 //   if (!ticketPicture.getImagePath().contains("VLPR")) {
                         uploadFlag = TPUtility.uploadFile(ticketPicture.getImagePath(),
                                 TPConstant.FILE_UPLOAD + "/uploadfile",
                                 TPApplication.getInstance().getCustId());
                         __updateTicketPictureImageStatus(ticketPicture.getS_no(), citationNumber, uploadFlag);
 
-               //     }
+              //      }
 
                 } catch (Exception e) {
                     log.error(TPUtility.getPrintStackTrace(e));

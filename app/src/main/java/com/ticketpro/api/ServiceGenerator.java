@@ -47,9 +47,9 @@ public class ServiceGenerator {
             .connectionSpecs(Collections.singletonList(ConnectionSpec.COMPATIBLE_TLS));
 
     private static final OkHttpClient.Builder httpClient1 = new OkHttpClient.Builder()
-            .readTimeout(7, TimeUnit.MINUTES)
-            .connectTimeout(7, TimeUnit.MINUTES)
-            .writeTimeout(7, TimeUnit.MINUTES)
+            .readTimeout(120, TimeUnit.SECONDS)
+            .connectTimeout(120, TimeUnit.SECONDS)
+            .writeTimeout(120, TimeUnit.SECONDS)
             .addInterceptor(loggingInterceptor);
 
 
@@ -129,9 +129,9 @@ public class ServiceGenerator {
         final HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         final OkHttpClient client = new OkHttpClient.Builder()
-                .readTimeout(7, TimeUnit.MINUTES)
-                .connectTimeout(7, TimeUnit.MINUTES)
-                .writeTimeout(7, TimeUnit.MINUTES)
+                .readTimeout(120, TimeUnit.SECONDS)
+                .connectTimeout(120, TimeUnit.SECONDS)
+                .writeTimeout(120, TimeUnit.SECONDS)
                 .addInterceptor(interceptor)
                 .build();
         Retrofit.Builder builder_rx =
@@ -149,9 +149,9 @@ public class ServiceGenerator {
         final HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         final OkHttpClient client = new OkHttpClient.Builder()
-                .readTimeout(7, TimeUnit.MINUTES)
-                .connectTimeout(7, TimeUnit.MINUTES)
-                .writeTimeout(7, TimeUnit.MINUTES)
+                .readTimeout(120, TimeUnit.SECONDS)
+                .connectTimeout(120, TimeUnit.SECONDS)
+                .writeTimeout(120, TimeUnit.SECONDS)
                 .addInterceptor(interceptor)
                 .build();
         Retrofit.Builder builder_rx =

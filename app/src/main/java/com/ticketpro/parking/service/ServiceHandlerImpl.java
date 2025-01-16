@@ -862,19 +862,18 @@ public class ServiceHandlerImpl implements ServiceHandler {
                 for (String imagePath : images) {
                     try {
 						/*if(imagePath.contains("selfi")){
-							uploadFlag = TPUtility.uploadFile(imagePath, 
-									TPConstant.SERVICE_URL + "/uploadfile", 
+							uploadFlag = TPUtility.uploadFile(imagePath,
+									TPConstant.SERVICE_URL + "/uploadfile",
 									TPApplication.getInstance().getCustId());
 						}else{*/
 
                         //}
 
-                      //  if (!imagePath.contains("VLPR")) {
-                        System.out.println("uploadfile6>>>>>>>");
+                        if (!imagePath.contains("VLPR")) {
                             uploadFlag = TPUtility.uploadFile(imagePath,
                                     TPConstant.FILE_UPLOAD + "/uploadfile",
                                     TPApplication.getInstance().getCustId());
-                   //     }
+                        }
                         if (!uploadFlag) {
                             TPUtility.markPendingImage(imagePath);
                             Ticket.updateTicket(String.valueOf(citationNumber), "PI");
@@ -914,12 +913,11 @@ public class ServiceHandlerImpl implements ServiceHandler {
 
                         //}
 
-                     //   if (!imagePath.contains("VLPR")) {
-                        System.out.println("uploadfile7>>>>>>>");
+                        if (!imagePath.contains("VLPR")) {
                             uploadFlag = TPUtility.uploadFile(imagePath,
                                     TPConstant.FILE_UPLOAD + "/uploadfile",
                                     TPApplication.getInstance().getCustId());
-                    //    }
+                        }
                         if (!uploadFlag) {
                             TPUtility.markPendingImage(imagePath);
 
@@ -1232,7 +1230,7 @@ public class ServiceHandlerImpl implements ServiceHandler {
                     assert response.body() != null;
                     if(response.isSuccessful())
                     { System.out.println("RepeatOffender updateCount"+response.body());
-                       result[0] =  true;
+                        result[0] =  true;
                        /* Intent serviceIntent = new Intent(WriteTicketActivity.this, JobIntentServiceSaveTicket.class);
                         JobIntentServiceSaveTicket.enqueueWork(WriteTicketActivity.this, serviceIntent);*/
                     }
@@ -1920,4 +1918,3 @@ public class ServiceHandlerImpl implements ServiceHandler {
         return result;
     }
 }
-

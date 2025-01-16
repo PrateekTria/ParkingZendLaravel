@@ -37,7 +37,6 @@ import com.ticketpro.parking.dar.model.Dar22500DisposionDropDownElement;
 import com.ticketpro.parking.dar.model.Dar22500DisposionDropDownElementResponse;
 import com.ticketpro.parking.dar.model.DarAdminDropdown;
 import com.ticketpro.parking.dar.model.DarAdminDropdownResponse;
-import com.ticketpro.parking.dar.model.DarAssignmentLocation;
 import com.ticketpro.parking.dar.model.DarAssignmentLocationResponse;
 import com.ticketpro.parking.dar.model.DarAssignmentResponse;
 import com.ticketpro.parking.dar.model.DarAuthorityResponse;
@@ -164,7 +163,7 @@ public class ProxyImpl implements Proxy {
     private static final String TAG = "PROXYIMPL";
     Logger log = Logger.getLogger("ProxyImpl");
     boolean syncStatus = true;
-    boolean observable1 = false, observable2 = false, observable3 = false, observable4 = false, observable5 = false, observable6 = false, observable7=false, observable8=false;;
+    boolean observable1 = false, observable2 = false, observable3 = false, observable4 = false, observable5 = false, observable6 = false, observable7=false, observable8=false;
     private ServiceHandler service;
 
     public ProxyImpl() throws Exception {
@@ -6188,6 +6187,7 @@ public class ProxyImpl implements Proxy {
     }
 
 
+
     @Override
     public void searchPermitVinHistory1(String vin, String state, PermitHandler context) throws TPException {
         try {
@@ -7666,7 +7666,7 @@ public class ProxyImpl implements Proxy {
         ParamFieldContact param = new ParamFieldContact();
         param.setCustId(TPApplication.getInstance().custId);
         param.setDetails(aList);
-        jsonRpc.setJsonrpc("2.o");
+        jsonRpc.setJsonrpc("2.0");
         jsonRpc.setMethod("dar_FieldContactInsert");
         jsonRpc.setId("82F85DB43CBF6");
         jsonRpc.setParams(param);
@@ -7688,7 +7688,7 @@ public class ProxyImpl implements Proxy {
         ParamSchool paramSchool = new ParamSchool();
         paramSchool.setDetails(aSchoolList);
         paramSchool.setCustId(TPApplication.getInstance().custId);
-        schoolJson_rpc.setJsonrpc("2.o");
+        schoolJson_rpc.setJsonrpc("2.0");
         schoolJson_rpc.setMethod("insertDarSchoolForm");
         schoolJson_rpc.setId("82F85DB43CBF6");
         schoolJson_rpc.setParams(paramSchool);

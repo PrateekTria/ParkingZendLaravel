@@ -107,10 +107,9 @@ public class WriteTicketNetworkCalls {
                 if ("Y".equalsIgnoreCase(picture.getLprNotification())) {
                     continue;
                 }
-             //   if (!picture.getImagePath().contains("VLPR")) {
-                System.out.println("uploadfile>>>>>>>>>>>>>>>>");
+               // if (!picture.getImagePath().contains("VLPR")) {
                     uploadImages.add(picture);
-            //    }
+              //  }
                 String[] path = picture.getImagePath().split("/");
                 picture.setImagePath(path[path.length - 1]);
                 ticketPictures.add(picture);
@@ -216,13 +215,12 @@ public class WriteTicketNetworkCalls {
             for (TicketPicture ticketPicture : images) {
                 try {
                  //   if (!ticketPicture.getImagePath().contains("VLPR")) {
-                    System.out.println("uploadfile1>>>>>>>>>>>>");
                         uploadFlag = TPUtility.uploadFile(ticketPicture.getImagePath(),
                                 TPConstant.FILE_UPLOAD + "/uploadfile",
                                 TPApplication.getInstance().getCustId());
                         __updateTicketPictureImageStatus(ticketPicture.getS_no(), citationNumber, uploadFlag);
 
-                   // }
+                //    }
 
                 } catch (Exception e) {
                     log.error(TPUtility.getPrintStackTrace(e));
@@ -322,12 +320,11 @@ public class WriteTicketNetworkCalls {
             boolean uploadFlag = true;
             for (String imagePath : images) {
                 try {
-                 //   if (!imagePath.contains("VLPR")) {
-                    System.out.println("uploadfile2>>>>>>>>>>");
+                //    if (!imagePath.contains("VLPR")) {
                         uploadFlag = TPUtility.uploadFile(imagePath,
                                 TPConstant.FILE_UPLOAD + "/uploadfile",
                                 TPApplication.getInstance().getCustId());
-             //       }
+               //     }
                     if (!uploadFlag) {
                         TPUtility.markPendingImage(imagePath);
                     }

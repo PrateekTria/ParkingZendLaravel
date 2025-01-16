@@ -702,6 +702,7 @@ public class TakePictureActivity extends BaseActivityImpl {
 
                         } else {
                             activeTicket.getTicketPictures().add(picture);
+                            activeTicket.setPhoto_count(activeTicket.getPhoto_count()+1);
                             if (Feature.isFeatureAllowed(Feature.PARK_RECOVERY_DATA)) {
                                 TicketPictureTemp.insertTicketPictureTemp(temp);
                             }

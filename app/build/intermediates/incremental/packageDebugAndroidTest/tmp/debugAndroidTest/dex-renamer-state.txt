@@ -1,4 +1,0 @@
-#Thu Jan 09 16:30:25 IST 2025
-base.0=/home/tspl/Desktop/DarParking_merge_30_09_2024/eDarParking_8jan2025/DarParking_merge_29_06_2024/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex

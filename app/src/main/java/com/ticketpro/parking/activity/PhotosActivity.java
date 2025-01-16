@@ -111,7 +111,7 @@ public class PhotosActivity extends BaseActivityImpl {
                 }
             });
 
-            if (activeTicket.getTicketPictures().size() == 0) {
+            if (activeTicket.getPhoto_count() == 0) {
                 takeNewPicture(null);
             } else {
                 displayPictures();
@@ -328,6 +328,7 @@ public class PhotosActivity extends BaseActivityImpl {
 
                                                     activeTicket.setTicketPictures(ticketPictures);
 
+
                                                 }
                                             } catch (Exception e) {
                                                 log.error(TPUtility.getPrintStackTrace(e));
@@ -348,6 +349,7 @@ public class PhotosActivity extends BaseActivityImpl {
                                                 preference.putBoolean(TPConstant.PREFS_KEY_STICKY_PHOTO, false);
                                                 TPApplication.getInstance().stickyPhoto = false;
                                                 activeTicket.getTicketPictures().remove(pictureIndex);
+                                                activeTicket.setPhoto_count(activeTicket.getPhoto_count()-1);
                                                 try {
                                                     TicketPictureTemp.removePictureById(picture.getS_no());
                                                 } catch (Exception e) {
@@ -357,6 +359,7 @@ public class PhotosActivity extends BaseActivityImpl {
                                             }else{
                                                 TPUtility.removeFile(picture.getImagePath());
                                                 activeTicket.getTicketPictures().remove(pictureIndex);
+                                                activeTicket.setPhoto_count(activeTicket.getPhoto_count()-1);
                                                 try {
                                                     TicketPictureTemp.removePictureById(picture.getS_no());
                                                 } catch (Exception e) {

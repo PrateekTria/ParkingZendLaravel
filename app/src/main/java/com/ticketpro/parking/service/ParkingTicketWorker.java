@@ -263,14 +263,13 @@ public class ParkingTicketWorker extends Worker {
             boolean uploadFlag = false;
             for (TicketPicture ticketPicture : images) {
                 try {
-                   // if (!ticketPicture.getImagePath().contains("VLPR")) {
-                    System.out.println("uploadfile5>>>>>>>");
+                  //  if (!ticketPicture.getImagePath().contains("VLPR")) {
                         uploadFlag = TPUtility.uploadFile(ticketPicture.getImagePath(),
                                 TPConstant.FILE_UPLOAD + "/uploadfile",
                                 TPApplication.getInstance().getCustId());
                         __updateTicketPictureImageStatus(ticketPicture.getS_no(), citationNumber, uploadFlag);
 
-                 //   }
+               //     }
 
                 } catch (Exception e) {
                     log.error(TPUtility.getPrintStackTrace(e));

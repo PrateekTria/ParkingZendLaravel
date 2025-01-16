@@ -1461,8 +1461,7 @@ public class WriteTicketActivity extends BaseActivityImpl implements MyTracker.A
         });
 
         photosBtn.setOnLongClickListener(v -> {
-            Intent i = new Intent();
-            i.setClass(WriteTicketActivity.this, PhotosActivity.class);
+            Intent i = new Intent(WriteTicketActivity.this, PhotosActivity.class);
             startActivityForResult(i, REQUEST_TAKE_PICTURE);
             return true;
         });
@@ -2449,17 +2448,17 @@ public class WriteTicketActivity extends BaseActivityImpl implements MyTracker.A
 
                         ChalkPicture chalkPicture = chalkPictures.get(i);
                         //ChalkPicture chalkPicture = ChalkPicture.getChalkPictureById(ticket.getChalkId());
-                    //    if (chalkPicture != null && !StringUtil.isEmpty(chalkPicture.getImagePath())) {
+                        if (chalkPicture != null && !StringUtil.isEmpty(chalkPicture.getImagePath())) {
                             TicketPicture picture = new TicketPicture();
                             picture.setTicketId(activeTicket.getTicketId());
                             picture.setCitationNumber(activeTicket.getCitationNumber());
                             picture.setCustId(activeTicket.getCustId());
                             picture.setImagePath(chalkPicture.getImagePath());
-//                            if(chalkPicture.getDownloadImage().contains("https://s3.amazonaws.com")){
-//                                picture.setDownloadImageUrl("");
-//                            }else{
-//                                picture.setDownloadImageUrl(chalkPicture.getDownloadImage());
-//                            }
+                            if(chalkPicture.getDownloadImage().contains("https://s3.amazonaws.com")){
+                                picture.setDownloadImageUrl("");
+                            }else{
+                                picture.setDownloadImageUrl(chalkPicture.getDownloadImage());
+                            }
 
                             picture.setImageResolution(chalkPicture.getImageResolution());
                             picture.setImageSize(chalkPicture.getImageSize());
@@ -2469,7 +2468,7 @@ public class WriteTicketActivity extends BaseActivityImpl implements MyTracker.A
 
                             activeTicket.getTicketPictures().add(picture);
                             photosBtn.setText("(" + activeTicket.getTicketPictures().size() + ")");
-                      //  }
+                        }
                     }
                 } catch (Exception e) {
                     log.error(TPUtility.getPrintStackTrace(e));
@@ -3059,7 +3058,7 @@ public class WriteTicketActivity extends BaseActivityImpl implements MyTracker.A
                 }
 
                 case REQUEST_TAKE_PICTURE: {
-                    photosBtn.setText("(" + activeTicket.getTicketPictures().size() + ")");
+                    photosBtn.setText("(" + activeTicket.getPhoto_count()+ ")");
                     break;
                 }
 
@@ -3261,8 +3260,7 @@ public class WriteTicketActivity extends BaseActivityImpl implements MyTracker.A
                             picture.setCustId(activeTicket.getCustId());
 
                             if (activeTicket.isLPR()) {
-                                if (!activeTicket.getTicketPictures().isEmpty()) {
-                                    photosBtn.setText("(" + activeTicket.getTicketPictures().size() + ")");
+                                if (activeTicket.getTicketPictures().size() > 0) {
                                     for (int i = 0; i < activeTicket.getTicketPictures().size(); i++) {
                                         TicketPicture tp = activeTicket.getTicketPictures().get(i);
                                         if (tp.getImagePath() != null && tp.getImagePath().contains("LPR")) {
