@@ -3642,10 +3642,16 @@ public class WriteTicketActivity extends BaseActivityImpl implements MyTracker.A
             }
         }
 
+// Ensure that maxPhotos doesn't exceed the current number of photos in the active ticket
+//        if (maxPhotos > activeTicket.getPhoto_count()) {
+//            maxPhotos = activeTicket.getPhoto_count();
+//        }
+
         if (maxPhotos > 0 && activeTicket.getPhoto_count() >= maxPhotos) {
             displayErrorMessage("Exceeded max photos limit.");
             return;
         }
+
 
         if (this.flashCamera != null) {
             this.flashCamera.stopPreview();

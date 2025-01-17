@@ -175,7 +175,7 @@ public class PhotosActivity extends BaseActivityImpl {
                         TPApplication.getInstance().stickyPhoto = isChecked;
 
                     }else {
-                        if (TPApp.getLastPhotos().size()>0) {
+                        if (!TPApp.getLastPhotos().isEmpty()) {
                             TicketPicture ticketPicture = activeTicket.getTicketPictures().get(pictureIndex);
                             ticketPicture.setPhotoSp(false);
                             preference.putBoolean(TPConstant.PREFS_KEY_STICKY_PHOTO, false);

@@ -528,7 +528,7 @@ public class NotificationHandler {
             Button deleteButton = (Button) inputDlgView.findViewById(R.id.delete_button);
             deleteButton.setOnClickListener(view -> deleteNotification(lprNotify.getNotificationId()));
 
-            if (TPApp.getUserInfo() == null) {
+            if (TPApp.getUserInfo() == null || TPApp.getActiveDutyReport()==null || TPApp.getDarTaskReoprtId().equals("")) {
                 closeButton.setVisibility(View.VISIBLE);
                 cancelBtn.setVisibility(View.GONE);
                 writeBtn.setVisibility(View.GONE);
