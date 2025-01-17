@@ -3632,9 +3632,9 @@ public class WriteTicketActivity extends BaseActivityImpl implements MyTracker.A
             try {
                 maxPhotos = Integer.parseInt(value);
 
-                if (activeTicket.getPhoto_count() > 0) {
-                    maxPhotos = maxPhotos + activeTicket.getPhoto_count();
-                }
+//                if (activeTicket.getPhoto_count() > 0) {
+//                    maxPhotos = maxPhotos + activeTicket.getPhoto_count();
+//                }
                 if (activeTicket.isLPR()) {
                     maxPhotos = maxPhotos + 1;
                 }
@@ -3642,7 +3642,7 @@ public class WriteTicketActivity extends BaseActivityImpl implements MyTracker.A
             }
         }
 
-        if (maxPhotos > 0 && activeTicket.getTicketPictures().size() >= maxPhotos) {
+        if (maxPhotos > 0 && activeTicket.getPhoto_count() >= maxPhotos) {
             displayErrorMessage("Exceeded max photos limit.");
             return;
         }
